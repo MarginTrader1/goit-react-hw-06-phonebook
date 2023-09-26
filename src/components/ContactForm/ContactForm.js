@@ -1,4 +1,4 @@
-import { addContact } from 'redux/actions';
+import { addContact } from 'redux/contactsSlice';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 import { getContacts } from 'redux/selectors';
 import { useDispatch } from 'react-redux';
@@ -55,6 +55,7 @@ export const ContactForm = () => {
 
     /* если false - отправляем объект для добавления в state */
     dispatch(addContact(newContact));
+    console.log(addContact(newContact));
   };
 
   return (
@@ -91,7 +92,6 @@ export const ContactForm = () => {
         </label>
 
         <Button type="submit">Добавить контакт</Button>
-        <Button type="button">Defalt Settings</Button>
       </StyledForm>
     </Formik>
   );

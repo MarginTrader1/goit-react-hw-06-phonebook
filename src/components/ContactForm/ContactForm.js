@@ -55,7 +55,6 @@ export const ContactForm = () => {
 
     /* если false - отправляем объект для добавления в state */
     dispatch(addContact(newContact));
-    console.log(addContact(newContact));
   };
 
   return (

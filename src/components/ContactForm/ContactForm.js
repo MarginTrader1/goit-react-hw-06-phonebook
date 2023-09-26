@@ -1,7 +1,7 @@
 import { addContact } from 'redux/contactsSlice';
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'; 
 // используем библиотеку Formik для заполнения форм ввода
 
 import { Formik } from 'formik';

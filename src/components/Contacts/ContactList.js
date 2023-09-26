@@ -5,27 +5,31 @@ import { deleteContact } from 'redux/contactsSlice';
 import { useDispatch } from 'react-redux';
 
 export const ContactsList = () => {
-
-  /* Процесс фильрации контактов. 
-  Получаем массив контактов и фильтр. Фильтруем контакты*/
+  /* забираем данные из State */
   const list = useSelector(getContacts);
   const filter = useSelector(getFilter);
-  const filteredList = list.filter(item =>
-    item.name.toLowerCase().includes(filter.toLowerCase())
-  );
-  
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+
+  /* Функция фильрации контактов */
+  const getfilteredContacts = () => {
+    if (filter === '') {
+      return list;
+    }
+    return list.filter(item =>
+      item.name.toLowerCase().includes(filter.toLowerCase())
+    );
+  };
 
   /* функция удаления контакта */
   const handleDeleteContact = id => {
     // фильтруем массив объектов по id -> возвращаем массив без объекта с таким id
     const newList = list.filter(item => item.id !== id);
     dispatch(deleteContact(newList));
-  }
+  };
 
   return (
     <Ul>
-      {filteredList.map(item => (
+      {getfilteredContacts().map(item => (
         <Li key={item.id}>
           <P>
             {item.name}: {item.number}

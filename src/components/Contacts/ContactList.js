@@ -10,7 +10,7 @@ export const ContactsList = () => {
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
 
-  /* Функция фильрации контактов */
+  /* Функция фильтрации контактов */
   const getfilteredContacts = () => {
     if (filter === '') {
       return list;

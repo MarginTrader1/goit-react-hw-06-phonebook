@@ -11,11 +11,11 @@ const contactsInitialState = [
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: contactsInitialState,
+  initialState: {items: contactsInitialState},
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.push(action.payload);
+        state.items.push(action.payload);
         return;
       },
       prepare(newContact) {
@@ -25,7 +25,9 @@ const contactsSlice = createSlice({
 
     deleteContact: {
       reducer(state, action) {
-        return [...action.payload];
+        state.items = [...action.payload]
+        console.log(state.items)
+        return;
       },
       prepare(newList) {
         return { payload: newList };

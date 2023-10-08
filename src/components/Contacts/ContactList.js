@@ -9,7 +9,7 @@ export const ContactsList = () => {
   const list = useSelector(getContacts);
   const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-
+ 
   /* Функция фильтрации контактов */
   const getfilteredContacts = () => {
     if (filter === '') {
@@ -22,8 +22,10 @@ export const ContactsList = () => {
 
   /* функция удаления контакта */
   const handleDeleteContact = id => {
+
     // фильтруем массив объектов по id -> возвращаем массив без объекта с таким id
     const newList = list.filter(item => item.id !== id);
+    console.log(newList)
     dispatch(deleteContact(newList));
   };
 

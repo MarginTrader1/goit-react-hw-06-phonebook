@@ -25,7 +25,6 @@ export const ContactsList = () => {
 
     // фильтруем массив объектов по id -> возвращаем массив без объекта с таким id
     const newList = list.filter(item => item.id !== id);
-    console.log(newList)
     dispatch(deleteContact(newList));
   };
 

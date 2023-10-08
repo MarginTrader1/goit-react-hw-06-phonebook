@@ -11,7 +11,7 @@ const contactsInitialState = [
 
 const contactsSlice = createSlice({
   name: 'contacts',
-  initialState: {items: contactsInitialState},
+  initialState: { items: contactsInitialState },
   reducers: {
     addContact: {
       reducer(state, action) {
@@ -25,16 +25,23 @@ const contactsSlice = createSlice({
 
     deleteContact: {
       reducer(state, action) {
-        state.items = [...action.payload]
-        console.log(state.items)
+        state.items = [...action.payload];
         return;
       },
       prepare(newList) {
         return { payload: newList };
       },
     },
+
+    setDefaultContacts: {
+      reducer(state) {
+        state.items = [...contactsInitialState];
+        return;
+      },
+    },
   },
 });
 
-export const { addContact, deleteContact } = contactsSlice.actions;
+export const { addContact, deleteContact, setDefaultContacts } =
+  contactsSlice.actions;
 export const contactsReduser = contactsSlice.reducer;

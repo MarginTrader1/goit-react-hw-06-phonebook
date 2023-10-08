@@ -1,7 +1,7 @@
-import { addContact } from 'redux/contactsSlice';
+import { addContact, setDefaultContacts } from 'redux/contactsSlice';
 import { useSelector } from 'react-redux';
 import { getContacts } from 'redux/selectors';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch } from 'react-redux';
 // используем библиотеку Formik для заполнения форм ввода
 
 import { Formik } from 'formik';
@@ -57,6 +57,11 @@ export const ContactForm = () => {
     dispatch(addContact(newContact));
   };
 
+  /* возвращаем первичное значение стейта */
+  const defaultState = () => {
+    dispatch(setDefaultContacts());
+  };
+
   return (
     <Formik
       initialValues={{
@@ -91,6 +96,9 @@ export const ContactForm = () => {
         </label>
 
         <Button type="submit">Добавить контакт</Button>
+        <Button type="button" onClick={defaultState}>
+          Default State
+        </Button>
       </StyledForm>
     </Formik>
   );
